@@ -15,6 +15,7 @@ public class Sifruj {
         String vstup = "ahoj svete!";
 
         byte[] k = Files.readAllBytes(Paths.get("klic.dat"));
+
         SecretKey key = new SecretKeySpec(k, "AES");
 
         Cipher cipher = Cipher.getInstance("AES");
