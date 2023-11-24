@@ -6,20 +6,24 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.NoSuchAlgorithmException;
+import java.security.*;
 import java.util.Arrays;
 
 public class GeneratorKlice {
     public static void main(String[] args) throws NoSuchAlgorithmException, IOException {
-        KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-        keyGenerator.init(128);
-        SecretKey key = keyGenerator.generateKey();
+        KeyPairGenerator keyGenerator = KeyPairGenerator.getInstance("RSA");
+        keyGenerator.initialize(512);
+        KeyPair keyPair = keyGenerator.generateKeyPair();
 
-        byte[] k = key.getEncoded();
+        Path fn = Paths.get("mujklicPublic.dat");
+        PublicKey   publicKey = keyPair.getPublic();
+        byte[] buf = publicKey.getEncoded();
+        Files.write(fn, buf);
 
-        Path jmenoSouboru = Paths.get("mujklic.dat");
-        Files.write(jmenoSouboru, k);
+        System.out.println(publicKey);
 
-        System.out.println(Arrays.toString(k));
+        Files.write(Paths.get("mujklicPrivate.data"), keyPair.getPrivate().getEncoded());
+
+
     }
 }

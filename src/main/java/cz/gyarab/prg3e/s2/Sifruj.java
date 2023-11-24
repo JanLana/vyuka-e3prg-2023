@@ -14,8 +14,10 @@ public class Sifruj {
     public static void main(String[] args) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException, IOException {
         String str = "ahoj studenti";
 
-        Path jmenoSouboru = Paths.get("mujklic.dat");
+        Path jmenoSouboru = Paths.get("mujklicPublic.dat");
         byte[] k = Files.readAllBytes(jmenoSouboru);
+
+       //
 
         SecretKey key = new SecretKeySpec(k, "AES");
 
