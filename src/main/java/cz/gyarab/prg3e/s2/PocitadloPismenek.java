@@ -13,6 +13,10 @@ public class PocitadloPismenek {
         msg = msg.toLowerCase();
         msg = Normalizer.normalize(msg, Normalizer.Form.NFD).replaceAll("\\p{InCombiningDiacriticalMarks}+", "");
 
+        vypisVsechno(msg);
+    }
+
+    private static void vypisVsechno(String msg) {
         for(char ch: msg.toCharArray()) {
             System.out.println(ch);
         }

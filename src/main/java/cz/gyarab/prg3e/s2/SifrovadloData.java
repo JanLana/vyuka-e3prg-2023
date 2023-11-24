@@ -1,0 +1,14 @@
+package cz.gyarab.prg3e.s2;
+
+import javax.crypto.SecretKey;
+import java.io.Serializable;
+
+public class SifrovadloData implements Serializable {
+    SecretKey key;
+    byte[] zprava;
+
+    public SifrovadloData(SecretKey key, byte[] zprava) {
+        this.key = key;
+        this.zprava = zprava;
+    }
+}
