@@ -15,6 +15,14 @@ public class Klicnik {
         keyGenerator.initialize(512);
         KeyPair key = keyGenerator.generateKeyPair();
 
+        String privatni = Base64.getEncoder().encodeToString(key.getPrivate().getEncoded());
+        String verejny = Base64.getEncoder().encodeToString(key.getPublic().getEncoded());
+
+        System.out.println("Privatni klic: " + privatni);
+        System.out.println("Verejny klic: " + verejny);
+/*
+
+
         Files.write(Paths.get("klicPrivate.dat"), key.getPrivate().getEncoded());
 
         PublicKey privateKey = key.getPublic();
@@ -25,5 +33,7 @@ public class Klicnik {
         String encodedString = Base64.getEncoder().encodeToString(buf);
         byte[] decodedBytes = Base64.getDecoder().decode(encodedString);
         System.out.println(encodedString);
+
+ */
     }
 }
